@@ -1,18 +1,16 @@
 import React, {FC} from 'react';
 import {IUser} from "../../models/IUser";
-import Posts from "../posts/Posts";
-interface UserProps {
+
+interface CommProps {
     item:IUser
 }
-const User:FC<UserProps> = ({item}) => {
+const Comment:FC<CommProps> = ({item}) => {
     return (
         <div>
             Name - {item.name},
             <span>id:{item.id}</span>,
-            <button onClick={()=>{
-            }}>To posts of this user</button>
         </div>
     );
 };
 
-export default User;
+export default Comment;
