@@ -4,9 +4,7 @@ import {apiService} from "../services/api.service";
 import User from "../components/user/User";
 import Users from "../components/users/Users";
 
-interface IProps{
-    lift: (user: IUser) => void}
-const UsersPage:FC<IProps> = ({lift}) => {
+const UsersPage = () => {
 
     return (
         <div>

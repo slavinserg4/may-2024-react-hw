@@ -6,8 +6,7 @@ interface IProps{
 const Post:FC<IProps> = ({item}) => {
     return (
         <div>
-            Title - {item.title},
-            Id:{item.id}
+            Title - {item.title}
         </div>
     );
 };

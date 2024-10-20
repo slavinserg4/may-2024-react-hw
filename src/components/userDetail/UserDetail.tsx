@@ -1,22 +1,33 @@
 import React, {FC, useEffect, useState} from 'react';
 import {IUser} from "../../models/IUser";
-import {getUserInfo} from "../../services/api.service";
 import User from "../user/User";
 import Users from "../users/Users";
 import UsersPage from "../../pages/UsersPage";
+import {useLocation} from "react-router-dom";
+import {IPost} from "../../models/IPost";
+import {getPostsOfUser} from "../../services/api.service";
+import PostsOfUser from "../postofuser/PostsOfUser";
 
 
 interface UserDetailProp{
-    item:IUser
+    item:any
     children?: React.ReactNode;
 }
 
 const UserDetail:FC<UserDetailProp> = ({item}) => {
-    const[usersdetail, setusersdetail] = useState<IUser>();
+    const [posts, setposts] = useState<IPost[]>([])
+    useEffect(() => {
+        getPostsOfUser(item).then(value => setposts(value));
+    }, []);
     return (
         <div>
-            {usersdetail?.id} <br/> {usersdetail?.name} <br/> {usersdetail?.username}
-
+            <h3>User:</h3>
+            <br/>
+            {item.id} {item.username} {item.name} {item.phone}
+            <hr/>
+            <h3>Posts:</h3>
+            <br/>
+            {posts.map(value => <PostsOfUser key={value.id} item={value}/>)}
         </div>
 
 
