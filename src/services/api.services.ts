@@ -17,7 +17,7 @@ export const userService = {
 }
 export const postService = {
     getPostsOfUsers:async (id:number)=>{
-        let axiosResponse = await axiosInstanse.get<IResponsePostsModel>('/posts', {params:{userID:id}})
+        let axiosResponse = await axiosInstanse.get<IResponsePostsModel>(`/users/${id}/posts`)
         let data = axiosResponse.data;
         return data.posts;
     }
