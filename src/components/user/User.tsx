@@ -1,16 +1,19 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {IUser} from "../../models/IUser";
-import Posts from "../posts/Posts";
+import {Link} from "react-router-dom";
+
+
+
+
 interface UserProps {
     item:IUser
-}
-const User:FC<UserProps> = ({item}) => {
+    lift: (user: IUser) => void
+};
+const User:FC<UserProps> = ({item,lift}) => {
+
     return (
         <div>
-            Name - {item.name},
-            <span>id:{item.id}</span>,
-            <button onClick={()=>{
-            }}>To posts of this user</button>
+            <Link onClick={()=>{lift(item)}} to={item.id.toString()}>{item.name}</Link>
         </div>
     );
 };

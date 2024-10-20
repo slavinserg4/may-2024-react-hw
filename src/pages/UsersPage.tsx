@@ -1,16 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {IUser} from "../models/IUser";
 import {apiService} from "../services/api.service";
 import User from "../components/user/User";
 import Users from "../components/users/Users";
 
-
-const UsersPage = () => {
+interface IProps{
+    lift: (user: IUser) => void}
+const UsersPage:FC<IProps> = ({lift}) => {
 
     return (
         <div>
             {
-               <Users/>
+               <Users lift={lift}/>
             }
         </div>
     );

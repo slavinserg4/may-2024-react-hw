@@ -1,7 +1,8 @@
 import axios from "axios";
+import {IUser} from "../models/IUser";
 
 const axiosInstance = axios.create({
-    baseURL: 'https://jsonplaceholder.typicode.com/',
+    baseURL: 'https://jsonplaceholder.typicode.com',
     headers: {}
 });
 
@@ -23,3 +24,16 @@ export const apiService = {
         getAll
     },
 }
+
+export const getUserInfo = async (user: IUser):Promise<IUser>=> {
+    let response = await axiosInstance.get<IUser>('/users', {
+        params: {userId: user.id}});
+    return response.data;
+}
+
+
+
+
+
+
+
