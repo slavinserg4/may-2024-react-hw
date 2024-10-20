@@ -13,16 +13,10 @@ interface UserDetailProp{
 
 const UserDetail:FC<UserDetailProp> = ({item}) => {
     const[usersdetail, setusersdetail] = useState<IUser>();
-    const lift = (user: IUser) => {
-        getUserInfo(user)
-            .then((response: IUser) => {
-                setusersdetail(response);
-            });
-    }
     return (
         <div>
             {usersdetail?.id} <br/> {usersdetail?.name} <br/> {usersdetail?.username}
-            <UsersPage lift={lift}/>
+
         </div>
 
 

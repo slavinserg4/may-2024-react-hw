@@ -11,7 +11,7 @@ const UsersPage:FC<IProps> = ({lift}) => {
     return (
         <div>
             {
-               <Users lift={lift}/>
+               <Users/>
             }
         </div>
     );
