@@ -7,7 +7,7 @@ const Users:FC<UsersProps> = ({users}) => {
     return (
         <div>
             {
-                users.map(value => (<div>{value.name}</div>))
+                users.map(value => (<div>{value.firstName}</div>))
             }
         </div>
     );
