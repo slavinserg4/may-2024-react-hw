@@ -17,7 +17,8 @@
     "web-vitals": "^2.1.4",
     "axios": "^1.7.7",
     "react-router-dom": "^6.27.0",
-    "react-hook-form": "^7.53.1"
+    "react-hook-form": "^7.53.1",
+    "zustand": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
