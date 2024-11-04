@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import UsersPage from "../pages/UsersPage";
 import PostsPage from "../pages/PostsPage";
 import CommentsPage from "../pages/CommentsPage";
+import PostsWithCommentsPage from "../pages/PostsWithCommentsPage";
 
 export const routes = createBrowserRouter([
     {
@@ -20,6 +21,9 @@ export const routes = createBrowserRouter([
             {
                 path:'/comments', element:<CommentsPage/>
             },
+            {
+                path:'/postswithcomments', element:<PostsWithCommentsPage/>
+            }
         ]
     }
 ])

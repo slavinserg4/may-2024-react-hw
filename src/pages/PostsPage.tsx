@@ -1,12 +1,17 @@
-import React, {useContext} from 'react';
-import {MyContext} from "../ContextProvider";
+
+import {useStore} from "../store";
+import {useEffect} from "react";
+import {getPosts} from "../services/api.services";
 
 const PostsPage = () => {
-    let context = useContext(MyContext)
+    let {postSlice:{loadPosts, allPosts}} = useStore()
+    useEffect(() => {
+        getPosts().then(post=>loadPosts(post));
+    }, []);
     return (
-        <div>
-            {context.PostSlice.allPosts.map((post)=>(<div>{post.title}</div>))}
-        </div>
+        <ul>
+            {allPosts.map(posts=>(<li key={posts.id}>{posts.title}</li>))}
+        </ul>
     );
 };
 

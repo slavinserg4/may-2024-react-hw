@@ -1,12 +1,17 @@
-import React, {useContext} from 'react';
-import {MyContext} from "../ContextProvider";
+import React, {useContext, useEffect} from 'react';
+import {useStore} from "../store";
+import {getComments} from "../services/api.services";
 
 const CommentsPage = () => {
-    let context = useContext(MyContext)
+    let {commentSlice:{allComments, loadComments}} = useStore()
+    useEffect(() => {
+        getComments().then(comm=>loadComments(comm))
+    }, []);
+
     return (
-        <div>
-            {context.CommentSlice.allComments.map((comment)=>(<div>{comment.body}</div>))}
-        </div>
+        <ul>
+            {allComments.map(comm=>(<li key={comm.id}>{comm.body}</li>))}
+        </ul>
     );
 };
 

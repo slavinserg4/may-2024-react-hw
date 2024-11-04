@@ -1,12 +1,17 @@
-import React, {useContext} from 'react';
-import {MyContext} from "../ContextProvider";
+import React, {useContext, useEffect} from 'react';
+import {useStore} from "../store";
+import {getUsers} from "../services/api.services";
+
 
 const UsersPage = () => {
-    let context = useContext(MyContext)
+    let {userSlice:{loadUsers, allUsers}} = useStore()
+    useEffect(() => {
+        getUsers().then(users=>loadUsers(users))
+    }, []);
     return (
-        <div>
-            {context.UserSlice.allUsers.map((user)=>(<div>{user.firstName}</div>))}
-        </div>
+        <ul>
+            {allUsers.map(user => (<li key={user.id}>{user.firstName}</li>))}
+        </ul>
     );
 };
 
