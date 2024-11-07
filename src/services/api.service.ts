@@ -11,7 +11,6 @@ const axiosInstance = axios.create({
 export const getUsers = async (): Promise<IUser[]> => {
     let axiosResponse = await axiosInstance.get<IUser[]>('/users');
     return axiosResponse.data;
-    console.log(axiosResponse.data)
 }
 export const getPosts = async (): Promise<IPost[]> => {
     let axiosResponse = await axiosInstance.get<IPost[]>('/posts');
