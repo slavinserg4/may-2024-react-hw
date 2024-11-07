@@ -1,6 +1,7 @@
 import {IPost} from "../../models/IPost";
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IComment} from "../../models/IComment";
+import {getComments} from "../../services/api.service";
 
 type CommentSliceType = {
     comments: IComment[];
@@ -15,8 +16,7 @@ export const commentInitState: CommentSliceType = {
 
 export const loadComments = createAsyncThunk('userSlice/loadComments', async (_, thunkAPI) => {
     try {
-        let commentsFromAPI = await fetch('https://jsonplaceholder.typicode.com/comments')
-            .then(value => value.json());
+        let commentsFromAPI = getComments()
         return thunkAPI.fulfillWithValue(commentsFromAPI);
     } catch (e) {
         return thunkAPI.rejectWithValue(e);

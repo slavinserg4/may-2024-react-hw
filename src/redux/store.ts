@@ -1,5 +1,4 @@
-
-import {configureStore, createAsyncThunk, createSlice, isFulfilled, isRejected, PayloadAction} from "@reduxjs/toolkit";
+import {configureStore} from "@reduxjs/toolkit";
 import {useDispatch, useSelector} from "react-redux";
 import {loadUsers, userSlice} from "./UserSlice/UserSlice";
 import {loadPosts, postSlice} from "./PostSlice/PostSlice";

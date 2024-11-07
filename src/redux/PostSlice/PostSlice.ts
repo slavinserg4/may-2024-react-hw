@@ -1,6 +1,7 @@
 import {IUser} from "../../models/IUser";
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IPost} from "../../models/IPost";
+import {getPosts} from "../../services/api.service";
 
     type PostSliceType = {
     posts: IPost[];
@@ -15,8 +16,7 @@ export const postInitState: PostSliceType = {
 
 export const loadPosts = createAsyncThunk('userSlice/loadPosts', async (_, thunkAPI) => {
     try {
-        let postsFromAPI = await fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(value => value.json());
+        let postsFromAPI = getPosts()
         return thunkAPI.fulfillWithValue(postsFromAPI);
     } catch (e) {
         return thunkAPI.rejectWithValue(e);

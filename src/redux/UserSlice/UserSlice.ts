@@ -1,5 +1,6 @@
 import {IUser} from "../../models/IUser";
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {getUsers} from "../../services/api.service";
 
 type UserSliceType = {
     users: IUser[];
@@ -14,8 +15,7 @@ const userInitState: UserSliceType = {
 
 export const loadUsers = createAsyncThunk('userSlice/loadUsers', async (_, thunkAPI) => {
     try {
-        let usersFromAPI = await fetch('https://jsonplaceholder.typicode.com/users')
-            .then(value => value.json());
+        let usersFromAPI = getUsers()
         return thunkAPI.fulfillWithValue(usersFromAPI);
     } catch (e) {
         return thunkAPI.rejectWithValue(e);
@@ -33,9 +33,6 @@ export let userSlice = createSlice({
                 state.users = action.payload;
             })
             .addCase(loadUsers.rejected, (state, action: PayloadAction<any>) => {
-                console.log(action.payload);
-                // sendErrorLog()
-
+                console.log('You have a problem with userSlice');
             })
-
 });
