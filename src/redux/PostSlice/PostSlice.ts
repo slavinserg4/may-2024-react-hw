@@ -16,7 +16,7 @@ export const postInitState: PostSliceType = {
 
 export const loadPosts = createAsyncThunk('userSlice/loadPosts', async (_, thunkAPI) => {
     try {
-        let postsFromAPI = getPosts()
+        let postsFromAPI = await getPosts()
         return thunkAPI.fulfillWithValue(postsFromAPI);
     } catch (e) {
         return thunkAPI.rejectWithValue(e);

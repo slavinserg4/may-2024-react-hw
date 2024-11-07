@@ -5,13 +5,13 @@ const UsersPage = () => {
     let userSliceState = useAppSelector(state => state.userPart)
     let dispatch = useAppDispatch()
     useEffect(() => {
-        dispatch(userSliceActions.loadUsers)
+        dispatch(userSliceActions.loadUsers())
     }, []);
 
     return (
         <div>
             {
-                userSliceState.users.map((user)=>user.name)
+                userSliceState.users.map((user)=><div>{user.name}</div>)
             }
         </div>
     );

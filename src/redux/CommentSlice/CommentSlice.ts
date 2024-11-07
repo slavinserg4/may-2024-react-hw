@@ -16,7 +16,7 @@ export const commentInitState: CommentSliceType = {
 
 export const loadComments = createAsyncThunk('userSlice/loadComments', async (_, thunkAPI) => {
     try {
-        let commentsFromAPI = getComments()
+        let commentsFromAPI = await getComments()
         return thunkAPI.fulfillWithValue(commentsFromAPI);
     } catch (e) {
         return thunkAPI.rejectWithValue(e);

@@ -15,7 +15,7 @@ const userInitState: UserSliceType = {
 
 export const loadUsers = createAsyncThunk('userSlice/loadUsers', async (_, thunkAPI) => {
     try {
-        let usersFromAPI = getUsers()
+        let usersFromAPI = await getUsers()
         return thunkAPI.fulfillWithValue(usersFromAPI);
     } catch (e) {
         return thunkAPI.rejectWithValue(e);
