@@ -12,7 +12,7 @@ const PostsPage = () => {
     return (
         <ul>
             {
-                postSliceState.posts.map((post)=><li><Link to={'commentsofposts'}>{post.title}</Link></li>)
+                postSliceState.posts.map((post)=><li>{post.title}</li>)
             }
 
         </ul>
